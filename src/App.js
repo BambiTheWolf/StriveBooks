@@ -4,6 +4,8 @@ import CustomAlert from "./components/WarningSign";
 import CustomBadge from "./components/MyBadge";
 import CustomBook from "./components/SingleBook";
 
+import books from "./data/scifi.json";
+
 function App() {
   return (
     <div>
@@ -12,7 +14,7 @@ function App() {
           caused by possessed/cursed books."
       />
       <CustomBadge badge="NEW BOOKS" color="primary" />
-      <CustomBook />
+      <CustomBook selectedBook={books[1]} />
     </div>
   );
 }

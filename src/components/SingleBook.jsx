@@ -1,5 +1,6 @@
 import { Row, Col, Container, Card } from "react-bootstrap";
 import books from "../data/scifi.json";
+import CustomList from "./Booklist";
 
 const CustomBook = (props) => (
   <Container fluid>
@@ -12,6 +13,9 @@ const CustomBook = (props) => (
             <Card.Text>{`${books[1].price}€`}</Card.Text>
           </Card.Body>
         </Card>
+      </Col>
+      <Col>
+        <CustomList />
       </Col>
     </Row>
   </Container>
