@@ -15,7 +15,7 @@ const CustomBook = (props) => (
         </Card>
       </Col>
       <Col>
-        <CustomList />
+        <CustomList books="../data/scifi.json" />
       </Col>
     </Row>
   </Container>
