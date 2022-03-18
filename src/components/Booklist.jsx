@@ -1,5 +1,6 @@
 import { Component } from "react";
-import { Card, Container, Row, Col, Form } from "react-bootstrap";
+import { Container, Row, Col, Form } from "react-bootstrap";
+import CustomBook from "./SingleBook";
 
 class CustomList extends Component {
   state = {
@@ -26,22 +27,10 @@ class CustomList extends Component {
             .filter((b) =>
               b.title.toLowerCase().includes(this.state.searchQuery)
             )
-            .map((book) => (
-              <Card style={{ width: "10rem", padding: "2px" }} key={book.asin}>
-                <Card.Img
-                  variant="top"
-                  src={book.img}
-                  onClick={() =>
-                    this.setState({
-                      selectedBooks: book,
-                    })
-                  }
-                />
-                <Card.Body>
-                  <Card.Title>{book.title}</Card.Title>
-                  <Card.Text>{`${book.price}€`}</Card.Text>
-                </Card.Body>
-              </Card>
+            .map((b) => (
+              <Col xs={3} key={b.asin}>
+                <CustomBook book={b} />
+              </Col>
             ))}
         </Row>
       </Container>

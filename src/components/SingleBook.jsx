@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Row, Col, Container, Card } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import CommentArea from "./CommentArea";
 
 class CustomBook extends Component {
@@ -8,30 +8,23 @@ class CustomBook extends Component {
   };
   render() {
     return (
-      <Container fluid>
-        <Row>
-          <Col md={6}>
-            <Card
-              onClick={() => this.setState({ selected: !this.state.selected })}
-              style={{
-                border: this.state.selected ? "3px solid blue" : "none",
-                width: "30rem",
-              }}
-            >
-              <Card.Img variant="top" src={this.props.book.img} />
-              <Card.Body>
-                <Card.Title>{this.props.book.title}</Card.Title>
-                <Card.Text>{`${this.props.book.price}€`}</Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col>
-            {this.state.selected && (
-              <CommentArea selectedBook={this.props.book.asin} />
-            )}
-          </Col>
-        </Row>
-      </Container>
+      <>
+        <Card
+          onClick={() => this.setState({ selected: !this.state.selected })}
+          style={{ border: this.state.selected ? "3px solid purple" : "none" }}
+        >
+          <Card.Img variant="top" src={this.props.book.img} />
+          <Card.Body>
+            <Card.Title style={{ color: "black" }}>
+              {this.props.book.title}
+            </Card.Title>
+            <Card.Text style={{ color: "black " }}>
+              {this.props.book.price}€
+            </Card.Text>
+          </Card.Body>
+        </Card>
+        {this.state.selected && <CommentArea asin={this.props.book.asin} />}
+      </>
     );
   }
 }
