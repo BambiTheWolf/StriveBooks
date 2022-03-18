@@ -1,8 +1,5 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import CustomAlert from "./components/WarningSign";
-import CustomBadge from "./components/MyBadge";
-import CustomBook from "./components/SingleBook";
 import CustomList from "./components/Booklist";
 
 import books from "./data/scifi.json";
