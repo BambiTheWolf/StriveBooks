@@ -9,31 +9,33 @@ class CustomList extends Component {
 
   render() {
     return (
-      <Container>
-        <Row>
-          <Col>
-            <Form.Group controlId="formBasicEmail">
-              <Form.Control
-                type="text"
-                placeholder="Search here"
-                value={this.state.searchQuery}
-                onChange={(e) => this.setState({ searchQuery: e.target.value })}
-              />
-            </Form.Group>
-          </Col>
+      <>
+        <Row md={4} className="justify-content-center">
+          <Form.Group controlId="formBasicEmail">
+            <Form.Control
+              type="text"
+              placeholder="Search here"
+              value={this.state.searchQuery}
+              onChange={(e) => this.setState({ searchQuery: e.target.value })}
+            />
+          </Form.Group>
         </Row>
-        <Row>
-          {this.props.books
-            .filter((b) =>
-              b.title.toLowerCase().includes(this.state.searchQuery)
-            )
-            .map((b) => (
-              <Col xs={3} key={b.asin}>
-                <CustomBook book={b} />
-              </Col>
-            ))}
-        </Row>
-      </Container>
+        <Container fluid>
+          <Row>
+            <Col md={8}>
+              {this.props.books
+                .filter((b) =>
+                  b.title.toLowerCase().includes(this.state.searchQuery)
+                )
+                .map((b) => (
+                  <Col xs={3} key={b.asin}>
+                    <CustomBook book={b} />
+                  </Col>
+                ))}
+            </Col>
+          </Row>
+        </Container>
+      </>
     );
   }
 }

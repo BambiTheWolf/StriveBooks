@@ -6,13 +6,7 @@ import books from "./data/scifi.json";
 
 function App() {
   return (
-    <div>
-      {/* <CustomAlert
-        text="DANGER! The site doesn't take any responsibilities for damage or injuries
-          caused by possessed/cursed books."
-      />
-      <CustomBadge badge="NEW BOOKS" color="primary" />
-      <CustomBook book={books[0]} /> */}
+    <div className="App">
       <CustomList books={books} />
     </div>
   );

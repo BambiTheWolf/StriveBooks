@@ -11,7 +11,10 @@ class CustomBook extends Component {
       <>
         <Card
           onClick={() => this.setState({ selected: !this.state.selected })}
-          style={{ border: this.state.selected ? "3px solid purple" : "none" }}
+          style={{
+            border: this.state.selected ? "3px solid purple" : "none",
+            width: "12rem",
+          }}
         >
           <Card.Img variant="top" src={this.props.book.img} />
           <Card.Body>
@@ -23,7 +26,6 @@ class CustomBook extends Component {
             </Card.Text>
           </Card.Body>
         </Card>
-        {this.state.selected && <CommentArea asin={this.props.book.asin} />}
       </>
     );
   }
