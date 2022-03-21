@@ -25,15 +25,17 @@ class CustomList extends Component {
         <Container fluid>
           <Row>
             <Col md={8}>
-              {this.props.books
-                .filter((b) =>
-                  b.title.toLowerCase().includes(this.state.searchQuery)
-                )
-                .map((b) => (
-                  <Col xs={3} key={b.asin}>
-                    <CustomBook book={b} />
-                  </Col>
-                ))}
+              <Row>
+                {this.props.books
+                  .filter((b) =>
+                    b.title.toLowerCase().includes(this.state.searchQuery)
+                  )
+                  .map((b) => (
+                    <Col xs={3} key={b.asin}>
+                      <CustomBook book={b} />
+                    </Col>
+                  ))}
+              </Row>
             </Col>
             <Col>
               <CommentArea />
