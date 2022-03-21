@@ -1,10 +1,12 @@
 import { Component } from "react";
 import { Container, Row, Col, Form } from "react-bootstrap";
+import CommentArea from "./CommentArea";
 import CustomBook from "./SingleBook";
 
 class CustomList extends Component {
   state = {
     searchQuery: "",
+    selected: undefined,
   };
 
   render() {
@@ -32,6 +34,9 @@ class CustomList extends Component {
                     <CustomBook book={b} />
                   </Col>
                 ))}
+            </Col>
+            <Col>
+              <CommentArea />
             </Col>
           </Row>
         </Container>

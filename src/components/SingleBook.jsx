@@ -26,6 +26,7 @@ class CustomBook extends Component {
             </Card.Text>
           </Card.Body>
         </Card>
+        {this.state.selected && <CommentArea asin={this.props.book.asin} />}
       </>
     );
   }
