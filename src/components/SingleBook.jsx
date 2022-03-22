@@ -1,19 +1,17 @@
-import { Component } from "react";
+import React from "react";
 import { Card } from "react-bootstrap";
-import CommentArea from "./CommentArea";
 
-class CustomBook extends Component {
-  state = {
-    selected: false,
-  };
+class SingleBook extends React.Component {
   render() {
     return (
       <>
         <Card
-          onClick={() => this.setState({ selected: !this.state.selected })}
+          onClick={() => this.props.changeSelectedBook(this.props.book.asin)}
           style={{
-            border: this.state.selected ? "3px solid purple" : "none",
-            width: "12rem",
+            border:
+              this.props.selectedBook === this.props.book.asin
+                ? "3px solid red"
+                : "none",
           }}
         >
           <Card.Img variant="top" src={this.props.book.img} />
@@ -21,15 +19,11 @@ class CustomBook extends Component {
             <Card.Title style={{ color: "black" }}>
               {this.props.book.title}
             </Card.Title>
-            <Card.Text style={{ color: "black " }}>
-              {this.props.book.price}€
-            </Card.Text>
           </Card.Body>
         </Card>
-        {this.state.selected && <CommentArea asin={this.props.book.asin} />}
       </>
     );
   }
 }
 
-export default CustomBook;
+export default SingleBook;

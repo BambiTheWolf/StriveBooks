@@ -7,7 +7,9 @@ import books from "./data/scifi.json";
 function App() {
   return (
     <div className="App">
-      <CustomList books={books} />
+      <header className="App-header">
+        <CustomList books={books} />
+      </header>
     </div>
   );
 }

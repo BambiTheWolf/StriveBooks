@@ -1,5 +1,4 @@
 import { Component } from "react";
-
 import CommentList from "./CommentList";
 import AddComment from "./AddComment";
 import Loading from "./Loading";
@@ -7,37 +6,43 @@ import Error from "./Error";
 
 class CommentArea extends Component {
   state = {
-    comments: [],
-    isLoading: true,
+    comments: [], // comments will go here
+    isLoading: false,
     isError: false,
   };
 
-  componentDidMount = async () => {
-    try {
-      let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/comments/" +
-          this.props.asin,
-        {
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MThkMzg2YTVmMzRhZDAwMTUzOWYxOWEiLCJpYXQiOjE2NDc1MjYzOTEsImV4cCI6MTY0ODczNTk5MX0.RTOqxg4qtOUBK_kBDbOaDloUmReaRfCmCxBBJu13cAI",
-          },
+  componentDidUpdate = async (prevProps) => {
+    if (prevProps.asin !== this.props.asin) {
+      this.setState({
+        isLoading: true,
+      });
+      try {
+        let response = await fetch(
+          "https://striveschool-api.herokuapp.com/api/comments/" +
+            this.props.asin,
+          {
+            headers: {
+              Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MThkMzg2YTVmMzRhZDAwMTUzOWYxOWEiLCJpYXQiOjE2NDc5NTcxMTksImV4cCI6MTY0OTE2NjcxOX0.P8kZTDgElmFuq7Wa5Wd89-Y8XTpxTnWHvRic3iiZ6-0",
+            },
+          }
+        );
+        console.log(response);
+        if (response.ok) {
+          let comments = await response.json();
+          this.setState({
+            comments: comments,
+            isLoading: false,
+            isError: false,
+          });
+        } else {
+          console.log("error");
+          this.setState({ isLoading: false, isError: true });
         }
-      );
-      if (response.ok) {
-        let comments = await response.json();
-        this.setState({
-          comments: comments,
-          isLoading: false,
-          isError: false,
-        });
-      } else {
-        console.log("an error occurred");
+      } catch (error) {
+        console.log(error);
         this.setState({ isLoading: false, isError: true });
       }
-    } catch (error) {
-      console.log(error);
-      this.setState({ isLoading: false, isError: true });
     }
   };
 
