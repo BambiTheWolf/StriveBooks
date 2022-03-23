@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 
-const AddComment = ({ selectedBook }) => {
+const AddComment = ({ asin }) => {
   const [comment, setComment] = useState({
     comment: "",
     rate: 1,
@@ -9,11 +9,11 @@ const AddComment = ({ selectedBook }) => {
   });
 
   useEffect(() => {
-    setComment({
-      ...comment,
-      elementId: selectedBook,
-    });
-  }, [selectedBook]);
+    setComment((c) => ({
+      ...c,
+      elementId: asin,
+    }));
+  }, [asin]);
 
   const sendComment = async (e) => {
     e.preventDefault();
