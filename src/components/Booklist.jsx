@@ -4,11 +4,6 @@ import { Col, Container, Form, Row } from "react-bootstrap";
 import CommentArea from "./CommentArea";
 
 const BookList = ({ books }) => {
-  const [state, setState] = useState({
-    searchQuery: "",
-    selectedBook: null,
-  });
-
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedBook, setSelectedBook] = useState(null);
 
