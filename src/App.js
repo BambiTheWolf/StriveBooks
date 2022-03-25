@@ -2,20 +2,21 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CustomList from "./components/Booklist";
-import Navbar from "./components/NavBar";
 
 import books from "./data/scifi.json";
+import Registration from "./components/Registration";
 
 const App = () => (
-  <div className="App">
-    <header className="App-header">
-      <BrowserRouter>
+  <BrowserRouter>
+    <div className="App">
+      <header className="App-header">
         <Routes>
           <Route path="/" element={<CustomList books={books} />} />
+          <Route path="/registration" element={<Registration />} />
         </Routes>
-      </BrowserRouter>
-    </header>
-  </div>
+      </header>
+    </div>
+  </BrowserRouter>
 );
 
 export default App;
